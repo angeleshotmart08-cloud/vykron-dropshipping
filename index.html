@@ -35,6 +35,20 @@
     .count{color:var(--muted);font-size:.76rem}.empty{margin-top:25px;min-height:235px;padding:42px 22px;border:1px solid var(--line);background:linear-gradient(145deg,#12151a,#0d0f12);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
     .mark{width:45px;height:45px;border:1px solid #6f7783;border-radius:50%;display:grid;place-items:center;color:#d9dde4;font-size:1.05rem;margin-bottom:16px}
     .empty h3{font-size:1.08rem;letter-spacing:-.02em;margin:0 0 8px}.empty p{max-width:450px;color:var(--muted);font-size:.86rem;margin:0}
+    .catalog-tools{display:grid;grid-template-columns:1fr 220px;gap:12px;margin:22px 0 0}
+    .catalog-tools input,.catalog-tools select{width:100%;background:#111419;border:1px solid var(--line);color:var(--white);padding:13px 14px;border-radius:0;outline:none;font:inherit;font-size:.82rem}
+    .catalog-tools input:focus,.catalog-tools select:focus{border-color:#aeb5c0}
+    .product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:25px}
+    .product-card{border:1px solid var(--line);background:#111419;overflow:hidden;min-width:0}
+    .product-photo{aspect-ratio:4/3;background:linear-gradient(145deg,#20252d,#0b0d10);display:grid;place-items:center;color:#7f8895;font-size:2rem;overflow:hidden}
+    .product-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .product-info{padding:17px}.product-category{color:#969eaa;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase}
+    .product-name{font-size:.98rem;font-weight:650;margin:7px 0 5px}.product-description{font-size:.78rem;color:var(--muted);margin:0 0 14px}
+    .product-price{font-weight:700;font-size:1.02rem}.product-old{font-size:.75rem;color:#7d8590;text-decoration:line-through;margin-left:8px}
+    .product-badge{display:inline-block;margin-bottom:9px;padding:4px 7px;border:1px solid #ffffff2b;color:#c7cdd6;font-size:.59rem;letter-spacing:.1em;text-transform:uppercase}
+    .catalog-empty{grid-column:1/-1}
+    @media(max-width:850px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:620px){.catalog-tools{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr}.product-photo{aspect-ratio:16/10}}
     .benefits{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:8px 0 78px}
     .benefit{padding:24px 20px;border-right:1px solid var(--line)}.benefit:last-child{border-right:0}.benefit strong{display:block;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:650}.benefit span{display:block;color:var(--muted);font-size:.75rem;margin-top:5px}
     .bottom-line{display:flex;justify-content:space-between;gap:20px;padding:22px 0;border-top:1px solid var(--line);color:#737b87;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase}
@@ -81,7 +95,16 @@
         <div><p class="section-kicker">La selección NØX</p><h2 id="featured-title">Productos destacados</h2></div>
         <div class="count" id="product-count">0 productos disponibles</div>
       </div>
-      <div id="products" class="empty">
+      <div class="catalog-tools" aria-label="Buscar y ordenar productos">
+        <input id="product-search" type="search" placeholder="Buscar productos..." aria-label="Buscar productos">
+        <select id="product-sort" aria-label="Ordenar productos">
+          <option value="featured">Ordenar: destacados</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="name">Nombre: A a Z</option>
+        </select>
+      </div>
+      <div id="products" class="product-grid" aria-live="polite"></div>
         <div class="mark">N</div>
         <h3>Estamos preparando algo especial.</h3>
         <p id="empty-copy">Muy pronto encontrarás aquí nuestra primera selección. Estamos confirmando proveedores, precios y disponibilidad para ofrecerte una experiencia confiable.</p>
@@ -96,21 +119,79 @@
   </main>
   <footer><div class="wrap footer-inner"><span class="footer-brand">NØX</span><span>© <span id="year"></span> NØX. Todos los derechos reservados.</span></div></footer>
   <script>
-    // El catálogo permanece vacío hasta verificar producto, proveedor, precio,
-    // disponibilidad, envío y condiciones de devolución.
+    // Añadiremos productos aquí únicamente después de verificar proveedor,
+    // precio, disponibilidad, envío y condiciones de devolución.
     const STORE = { name: "NØX", products: [] };
+    let activeCategory = "Todas";
+    const productsEl = document.getElementById("products");
+    const searchEl = document.getElementById("product-search");
+    const sortEl = document.getElementById("product-sort");
+    const countEl = document.getElementById("product-count");
     document.title = STORE.name + " | Selección contemporánea";
     document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("product-count").textContent =
-      STORE.products.length + (STORE.products.length === 1 ? " producto disponible" : " productos disponibles");
-    document.querySelectorAll("[data-category]").forEach((card) => {
+
+    const money = value => new Intl.NumberFormat("es-MX", {
+      style: "currency", currency: "MXN", maximumFractionDigits: 0
+    }).format(value);
+
+    function renderProducts() {
+      const term = searchEl.value.trim().toLocaleLowerCase("es-MX");
+      let list = STORE.products.filter(product => {
+        const matchesCategory = activeCategory === "Todas" || product.category === activeCategory;
+        const haystack = [product.name, product.category, product.description].join(" ").toLocaleLowerCase("es-MX");
+        return matchesCategory && haystack.includes(term);
+      });
+      if (sortEl.value === "price-asc") list.sort((a,b) => a.price - b.price);
+      if (sortEl.value === "price-desc") list.sort((a,b) => b.price - a.price);
+      if (sortEl.value === "name") list.sort((a,b) => a.name.localeCompare(b.name, "es"));
+      countEl.textContent = list.length + (list.length === 1 ? " producto disponible" : " productos disponibles");
+      productsEl.replaceChildren();
+
+      if (!list.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty catalog-empty";
+        const mark = document.createElement("div"); mark.className = "mark"; mark.textContent = "N";
+        const title = document.createElement("h3");
+        const copy = document.createElement("p");
+        if (STORE.products.length === 0) {
+          title.textContent = "Estamos preparando algo especial.";
+          copy.textContent = "Estamos verificando proveedores, precios y disponibilidad antes de publicar los primeros productos.";
+        } else {
+          title.textContent = "No encontramos productos.";
+          copy.textContent = "Prueba otra búsqueda o selecciona una categoría diferente.";
+        }
+        empty.append(mark,title,copy); productsEl.append(empty); return;
+      }
+
+      list.forEach(product => {
+        const card = document.createElement("article"); card.className = "product-card";
+        const photo = document.createElement("div"); photo.className = "product-photo";
+        if (product.image) {
+          const img = document.createElement("img"); img.src = product.image;
+          img.alt = product.name; img.loading = "lazy"; photo.append(img);
+        } else { photo.textContent = "NØX"; }
+        const info = document.createElement("div"); info.className = "product-info";
+        if (product.badge) { const badge = document.createElement("span"); badge.className = "product-badge"; badge.textContent = product.badge; info.append(badge); }
+        const category = document.createElement("div"); category.className = "product-category"; category.textContent = product.category;
+        const name = document.createElement("h3"); name.className = "product-name"; name.textContent = product.name;
+        const description = document.createElement("p"); description.className = "product-description"; description.textContent = product.description || "";
+        const price = document.createElement("span"); price.className = "product-price"; price.textContent = money(product.price);
+        info.append(category,name,description,price);
+        if (product.oldPrice && product.oldPrice > product.price) { const old = document.createElement("span"); old.className = "product-old"; old.textContent = money(product.oldPrice); info.append(old); }
+        card.append(photo,info); productsEl.append(card);
+      });
+    }
+
+    searchEl.addEventListener("input", renderProducts);
+    sortEl.addEventListener("change", renderProducts);
+    document.querySelectorAll("[data-category]").forEach(card => {
       card.addEventListener("click", () => {
-        const category = card.dataset.category;
-        document.getElementById("featured-title").textContent = category;
-        document.getElementById("empty-copy").textContent =
-          "Estamos preparando la selección de " + category.toLowerCase() + ". Publicaremos productos cuando confirmemos proveedores, precios y disponibilidad.";
+        activeCategory = card.dataset.category;
+        document.getElementById("featured-title").textContent = activeCategory;
+        renderProducts();
       });
     });
+    renderProducts();
   </script>
 </body>
 </html>
