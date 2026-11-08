@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="Catálogo en línea. Próximamente nuevos productos.">
+  <title>Tu tienda | Catálogo</title>
+  <style>
+    :root{color-scheme:dark;--bg:#101114;--panel:#191b20;--muted:#a5a8b1;--text:#f5f6f8;--accent:#c5a46d}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+    a{color:inherit}.wrap{width:min(1100px,92%);margin:auto}
+    header{border-bottom:1px solid #ffffff16;background:#101114ee;position:sticky;top:0;backdrop-filter:blur(12px)}
+    .nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-size:1.05rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+    .brand span{color:var(--accent)}.nav small{color:var(--muted)}
+    .hero{padding:78px 0 58px;max-width:760px}.eyebrow{color:var(--accent);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+    h1{font-size:clamp(2.5rem,7vw,5rem);line-height:1.02;letter-spacing:-.055em;margin:14px 0 18px}
+    .hero p{color:var(--muted);font-size:1.08rem;max-width:570px}
+    .section{padding:28px 0 78px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;border-bottom:1px solid #ffffff20;padding-bottom:16px}
+    h2{font-size:1.35rem;margin:0}.section-head p{color:var(--muted);margin:0;font-size:.9rem}
+    .empty{margin-top:24px;padding:44px 22px;border:1px dashed #ffffff35;border-radius:18px;text-align:center;background:var(--panel)}
+    .empty .symbol{font-size:2rem;color:var(--accent)}.empty h3{margin:8px 0}.empty p{margin:0;color:var(--muted)}
+    footer{border-top:1px solid #ffffff16;padding:24px 0;color:var(--muted);font-size:.85rem}
+    @media(max-width:600px){.hero{padding:58px 0 42px}.nav small{display:none}.section-head{align-items:start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header><div class="wrap nav"><div class="brand" id="store-name">TU<span>TIENDA</span></div><small>Catálogo en línea</small></div></header>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Compra fácil · Desde cualquier lugar</div>
+      <h1>Descubre algo<br>que te encante.</h1>
+      <p>Estamos preparando nuestro catálogo. Muy pronto encontrarás aquí productos seleccionados y toda la información para realizar tu pedido.</p>
+    </section>
+    <section class="section" aria-labelledby="catalog-title">
+      <div class="section-head"><h2 id="catalog-title">Catálogo</h2><p id="product-count">0 productos disponibles</p></div>
+      <div id="products" class="empty"><div class="symbol">✦</div><h3>Estamos preparando la tienda</h3><p>Los productos aparecerán aquí cuando confirmemos proveedores, precios y disponibilidad.</p></div>
+    </section>
+  </main>
+  <footer><div class="wrap">© <span id="year"></span> Tu tienda. Todos los derechos reservados.</div></footer>
+  <script>
+    // Configuración inicial. No publiques datos privados ni claves aquí.
+    const STORE = { name: "Tu tienda", products: [] };
+    document.title = STORE.name + " | Catálogo";
+    document.getElementById("store-name").textContent = STORE.name;
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("product-count").textContent =
+      STORE.products.length + (STORE.products.length === 1 ? " producto disponible" : " productos disponibles");
+  </script>
+</body>
+</html>
