@@ -4,47 +4,43 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08090b">
-  <meta name="description" content="NØX — selección contemporánea. Descubre productos que elevan tu día a día.">
+  <meta name="description" content="NØX — gadgets, tecnología, accesorios, moda y hallazgos que elevan tu día a día.">
   <title>NØX | Selección contemporánea</title>
   <style>
-    :root{color-scheme:dark;--bg:#08090b;--surface:#111317;--surface2:#171a20;--line:#ffffff18;--silver:#d9dde4;--muted:#969da8;--white:#f5f6f8}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    :root{color-scheme:dark;--bg:#08090b;--surface:#111419;--surface2:#171b21;--line:#ffffff18;--silver:#d9dde4;--muted:#969da8;--white:#f5f6f8}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
     body{margin:0;background:var(--bg);color:var(--white);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(1160px,90%);margin:auto}
-    .announcement{border-bottom:1px solid var(--line);text-align:center;padding:8px 12px;color:#b8bec8;font-size:.68rem;letter-spacing:.17em;text-transform:uppercase}
-    header{position:sticky;top:0;z-index:5;background:#08090beF;border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
-    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{font-size:1.42rem;font-weight:850;letter-spacing:.22em;color:var(--white)}
-    .brand span{color:#aeb5c0}
-    .nav-label{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-    .hero{position:relative;overflow:hidden;padding:104px 0 112px;border-bottom:1px solid var(--line)}
-    .hero:before{content:"";position:absolute;width:560px;height:560px;right:-130px;top:-210px;border-radius:50%;background:radial-gradient(circle,rgba(193,201,214,.13),rgba(193,201,214,0) 68%);pointer-events:none}
-    .hero-inner{position:relative;max-width:790px}
-    .eyebrow{display:inline-flex;align-items:center;gap:12px;color:#c2c8d1;font-size:.7rem;font-weight:650;letter-spacing:.24em;text-transform:uppercase}
-    .eyebrow:before{content:"";width:28px;height:1px;background:#aeb5c0}
-    h1{font-size:clamp(3.2rem,8vw,6.8rem);line-height:.98;letter-spacing:-.075em;margin:27px 0 24px;font-weight:750}
-    h1 span{display:block;color:#aeb5c0}
-    .hero-copy{max-width:520px;color:#a4abb5;font-size:1.05rem;margin:0 0 34px}
-    .cta{display:inline-flex;align-items:center;gap:22px;padding:14px 19px;border:1px solid #c7cdd6;color:#f4f5f7;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:.2s ease}
-    .cta:hover{background:#e7eaf0;color:#08090b}
-    .cta b{font-size:1.1rem;font-weight:400}
-    .hero-note{margin-top:62px;color:#69717d;font-size:.65rem;letter-spacing:.19em;text-transform:uppercase}
-    .catalog{padding:78px 0 100px}
-    .section-top{display:flex;align-items:end;justify-content:space-between;gap:20px;padding-bottom:22px;border-bottom:1px solid var(--line)}
-    .section-kicker{color:#929aa6;font-size:.67rem;letter-spacing:.2em;text-transform:uppercase;margin:0 0 9px}
-    h2{font-size:2rem;line-height:1.1;letter-spacing:-.04em;margin:0}
-    .count{color:var(--muted);font-size:.78rem}
-    .empty{margin-top:28px;min-height:260px;padding:50px 24px;border:1px solid var(--line);background:linear-gradient(145deg,#12151a,#0d0f12);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-    .mark{width:48px;height:48px;border:1px solid #6f7783;border-radius:50%;display:grid;place-items:center;color:#d9dde4;font-size:1.2rem;margin-bottom:18px}
-    .empty h3{font-size:1.15rem;letter-spacing:-.02em;margin:0 0 8px}
-    .empty p{max-width:420px;color:var(--muted);font-size:.9rem;margin:0}
-    .bottom-line{display:flex;justify-content:space-between;gap:20px;padding:24px 0;border-top:1px solid var(--line);color:#737b87;font-size:.67rem;letter-spacing:.12em;text-transform:uppercase}
-    footer{border-top:1px solid var(--line);padding:26px 0;color:#858d98;font-size:.76rem}
-    .footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    .footer-brand{color:#dce0e6;font-weight:750;letter-spacing:.2em}
-    @media(max-width:650px){.nav{height:66px}.hero{padding:76px 0 78px}h1{font-size:clamp(3rem,14vw,5rem)}.hero-note{margin-top:46px}.catalog{padding:62px 0 72px}.section-top{align-items:start;flex-direction:column}.bottom-line{flex-direction:column;gap:8px}}
+    a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(1160px,90%);margin:auto}
+    .announcement{border-bottom:1px solid var(--line);text-align:center;padding:8px 12px;color:#b8bec8;font-size:.67rem;letter-spacing:.17em;text-transform:uppercase}
+    header{position:sticky;top:0;z-index:10;background:#08090bef;border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+    .nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-size:1.42rem;font-weight:850;letter-spacing:.22em;color:var(--white)}.brand span{color:#aeb5c0}
+    .nav-links{display:flex;gap:25px;align-items:center}.nav-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#aab1bb;transition:color .2s}.nav-links a:hover{color:white}
+    .hero{position:relative;overflow:hidden;padding:100px 0 106px;border-bottom:1px solid var(--line)}
+    .hero:before{content:"";position:absolute;width:580px;height:580px;right:-140px;top:-230px;border-radius:50%;background:radial-gradient(circle,rgba(193,201,214,.14),rgba(193,201,214,0) 68%);pointer-events:none}
+    .hero-inner{position:relative;max-width:800px}.eyebrow{display:inline-flex;align-items:center;gap:12px;color:#c2c8d1;font-size:.69rem;font-weight:650;letter-spacing:.24em;text-transform:uppercase}.eyebrow:before{content:"";width:28px;height:1px;background:#aeb5c0}
+    h1{font-size:clamp(3.2rem,8vw,6.8rem);line-height:.98;letter-spacing:-.075em;margin:27px 0 24px;font-weight:750}h1 span{display:block;color:#aeb5c0}
+    .hero-copy{max-width:540px;color:#a4abb5;font-size:1.04rem;margin:0 0 32px}
+    .cta{display:inline-flex;align-items:center;gap:22px;padding:14px 19px;border:1px solid #c7cdd6;color:#f4f5f7;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;transition:.2s}.cta:hover{background:#e7eaf0;color:#08090b}.cta b{font-size:1.1rem;font-weight:400}
+    .hero-note{margin-top:58px;color:#69717d;font-size:.64rem;letter-spacing:.19em;text-transform:uppercase}
+    .section{padding:76px 0 82px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+    .section-kicker{color:#929aa6;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;margin:0 0 9px}h2{font-size:clamp(1.65rem,4vw,2.15rem);line-height:1.1;letter-spacing:-.045em;margin:0}
+    .section-intro{color:var(--muted);font-size:.85rem;max-width:360px;margin:0;text-align:right}
+    .category-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:25px}
+    .category{min-height:174px;padding:20px 17px;background:linear-gradient(145deg,#171b21,#0e1014);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s,border-color .2s,background .2s}
+    .category:hover{transform:translateY(-4px);border-color:#87909d;background:linear-gradient(145deg,#20252d,#101216)}
+    .category-symbol{font-size:1.35rem;color:#d1d6de}.category-name{font-size:.91rem;font-weight:650;letter-spacing:-.02em}.category-sub{font-size:.65rem;color:#8f98a4;letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+    .category-arrow{align-self:flex-end;color:#9da5b0;font-size:1rem}
+    .featured{padding-top:10px}.featured-top{display:flex;align-items:end;justify-content:space-between;gap:20px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+    .count{color:var(--muted);font-size:.76rem}.empty{margin-top:25px;min-height:235px;padding:42px 22px;border:1px solid var(--line);background:linear-gradient(145deg,#12151a,#0d0f12);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .mark{width:45px;height:45px;border:1px solid #6f7783;border-radius:50%;display:grid;place-items:center;color:#d9dde4;font-size:1.05rem;margin-bottom:16px}
+    .empty h3{font-size:1.08rem;letter-spacing:-.02em;margin:0 0 8px}.empty p{max-width:450px;color:var(--muted);font-size:.86rem;margin:0}
+    .benefits{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:8px 0 78px}
+    .benefit{padding:24px 20px;border-right:1px solid var(--line)}.benefit:last-child{border-right:0}.benefit strong{display:block;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:650}.benefit span{display:block;color:var(--muted);font-size:.75rem;margin-top:5px}
+    .bottom-line{display:flex;justify-content:space-between;gap:20px;padding:22px 0;border-top:1px solid var(--line);color:#737b87;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase}
+    footer{border-top:1px solid var(--line);padding:26px 0;color:#858d98;font-size:.75rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-brand{color:#dce0e6;font-weight:750;letter-spacing:.2em}
+    @media(max-width:850px){.category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.nav-links{gap:14px}}
+    @media(max-width:620px){.nav{min-height:66px}.nav-links{gap:12px}.nav-links a{font-size:.59rem}.nav-links a:nth-child(2){display:none}.hero{padding:72px 0 78px}h1{font-size:clamp(3rem,14vw,5rem)}.hero-note{margin-top:45px}.section{padding:60px 0 66px}.section-head{align-items:start;flex-direction:column}.section-intro{text-align:left}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.category{min-height:150px;padding:16px}.benefits{grid-template-columns:1fr;margin-bottom:58px}.benefit{border-right:0;border-bottom:1px solid var(--line);padding:18px 5px}.benefit:last-child{border-bottom:0}.bottom-line{flex-direction:column;gap:8px}}
   </style>
 </head>
 <body>
@@ -52,7 +48,9 @@
   <header>
     <div class="wrap nav">
       <a class="brand" href="#" aria-label="NØX inicio">N<span>Ø</span>X</a>
-      <div class="nav-label">Selección contemporánea</div>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#categorias">Categorías</a><a href="#destacados">Colección</a><a href="#nosotros">NØX</a>
+      </nav>
     </div>
   </header>
   <main>
@@ -60,33 +58,59 @@
       <div class="wrap hero-inner">
         <div class="eyebrow">Descubre lo extraordinario</div>
         <h1>Menos común.<span>Más tú.</span></h1>
-        <p class="hero-copy">Una selección de productos pensada para quienes buscan diseño, estilo y funcionalidad en cada detalle.</p>
-        <a class="cta" href="#catalogo">Explorar colección <b>↘</b></a>
-        <div class="hero-note">Estilo · Tecnología · Vida diaria</div>
+        <p class="hero-copy">Gadgets, tecnología, accesorios y estilo. Una selección de productos pensada para quienes buscan diseño, funcionalidad y personalidad en cada detalle.</p>
+        <a class="cta" href="#categorias">Explorar categorías <b>↘</b></a>
+        <div class="hero-note">Tecnología · Estilo · Tendencias · Vida diaria</div>
       </div>
     </section>
-    <section class="catalog wrap" id="catalogo" aria-labelledby="catalog-title">
-      <div class="section-top">
-        <div><p class="section-kicker">La selección NØX</p><h2 id="catalog-title">Explora el catálogo</h2></div>
+    <section class="section wrap" id="categorias" aria-labelledby="categories-title">
+      <div class="section-head">
+        <div><p class="section-kicker">Encuentra tu próximo favorito</p><h2 id="categories-title">Explora por categoría</h2></div>
+        <p class="section-intro">Distintas formas de descubrir algo que encaje contigo.</p>
+      </div>
+      <div class="category-grid">
+        <a class="category" href="#destacados" data-category="Tecnología y gadgets"><span class="category-symbol">⌁</span><span><span class="category-name">Tecnología y gadgets</span><span class="category-sub">Innovación diaria</span></span><span class="category-arrow">↗</span></a>
+        <a class="category" href="#destacados" data-category="Accesorios"><span class="category-symbol">◇</span><span><span class="category-name">Accesorios</span><span class="category-sub">Detalles que destacan</span></span><span class="category-arrow">↗</span></a>
+        <a class="category" href="#destacados" data-category="Moda"><span class="category-symbol">◈</span><span><span class="category-name">Moda</span><span class="category-sub">Estilo personal</span></span><span class="category-arrow">↗</span></a>
+        <a class="category" href="#destacados" data-category="Productos virales"><span class="category-symbol">✳</span><span><span class="category-name">Productos virales</span><span class="category-sub">Lo que está en tendencia</span></span><span class="category-arrow">↗</span></a>
+        <a class="category" href="#destacados" data-category="Hogar y vida diaria"><span class="category-symbol">⌂</span><span><span class="category-name">Hogar y vida diaria</span><span class="category-sub">Pequeñas mejoras</span></span><span class="category-arrow">↗</span></a>
+      </div>
+    </section>
+    <section class="wrap featured" id="destacados" aria-labelledby="featured-title">
+      <div class="featured-top">
+        <div><p class="section-kicker">La selección NØX</p><h2 id="featured-title">Productos destacados</h2></div>
         <div class="count" id="product-count">0 productos disponibles</div>
       </div>
       <div id="products" class="empty">
         <div class="mark">N</div>
         <h3>Estamos preparando algo especial.</h3>
-        <p>Muy pronto encontrarás aquí nuestra primera selección. Estamos confirmando proveedores, precios y disponibilidad para ofrecerte una experiencia confiable.</p>
+        <p id="empty-copy">Muy pronto encontrarás aquí nuestra primera selección. Estamos confirmando proveedores, precios y disponibilidad para ofrecerte una experiencia confiable.</p>
       </div>
+    </section>
+    <section class="wrap benefits" id="nosotros" aria-label="Compromiso NØX">
+      <div class="benefit"><strong>Selección cuidada</strong><span>Productos elegidos con intención.</span></div>
+      <div class="benefit"><strong>Información clara</strong><span>Precios y condiciones visibles antes de comprar.</span></div>
+      <div class="benefit"><strong>Compra con confianza</strong><span>Proveedores y disponibilidad por confirmar antes de publicar.</span></div>
     </section>
     <div class="wrap bottom-line"><span>Diseño con intención.</span><span>Una selección en constante evolución.</span></div>
   </main>
   <footer><div class="wrap footer-inner"><span class="footer-brand">NØX</span><span>© <span id="year"></span> NØX. Todos los derechos reservados.</span></div></footer>
   <script>
-    // Catálogo inicial vacío. Añade productos únicamente tras confirmar proveedor,
-    // precio, disponibilidad, envío y condiciones de devolución.
+    // El catálogo permanece vacío hasta verificar producto, proveedor, precio,
+    // disponibilidad, envío y condiciones de devolución.
     const STORE = { name: "NØX", products: [] };
     document.title = STORE.name + " | Selección contemporánea";
     document.getElementById("year").textContent = new Date().getFullYear();
     document.getElementById("product-count").textContent =
       STORE.products.length + (STORE.products.length === 1 ? " producto disponible" : " productos disponibles");
+    document.querySelectorAll("[data-category]").forEach((card) => {
+      card.addEventListener("click", () => {
+        const category = card.dataset.category;
+        document.getElementById("featured-title").textContent = category;
+        document.getElementById("empty-copy").textContent =
+          "Estamos preparando la selección de " + category.toLowerCase() + ". Publicaremos productos cuando confirmemos proveedores, precios y disponibilidad.";
+      });
+    });
   </script>
 </body>
 </html>
