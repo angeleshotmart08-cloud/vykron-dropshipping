@@ -115,9 +115,17 @@
   </main>
   <footer><div class="wrap footer-inner"><span class="footer-brand">NØX</span><span>© <span id="year"></span> NØX. Todos los derechos reservados.</span></div></footer>
   <script>
-    // Añadiremos productos aquí únicamente después de verificar proveedor,
-    // precio, disponibilidad, envío y condiciones de devolución.
-    const STORE = { name: "NØX", products: [] };
+    // Producto en ficha preliminar: no tiene compra ni cobro habilitados.
+    // Confirmar stock, envío, pago al proveedor y devoluciones antes de vender.
+    const STORE = { name: "NØX", products: [
+      {
+        name: "Consola portátil de videojuegos retro",
+        category: "Tecnología y gadgets",
+        description: "Precio propuesto. Disponibilidad, envío y condiciones del proveedor pendientes de confirmar. Aún no disponible para compra.",
+        price: 799,
+        badge: "Próximamente · en validación"
+      }
+    ] };
     let activeCategory = "Todas";
     const productsEl = document.getElementById("products");
     const searchEl = document.getElementById("product-search");
