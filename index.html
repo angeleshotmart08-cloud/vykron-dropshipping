@@ -115,15 +115,43 @@
   </main>
   <footer><div class="wrap footer-inner"><span class="footer-brand">NØX</span><span>© <span id="year"></span> NØX. Todos los derechos reservados.</span></div></footer>
   <script>
-    // Producto en ficha preliminar: no tiene compra ni cobro habilitados.
-    // Confirmar stock, envío, pago al proveedor y devoluciones antes de vender.
+    // Catálogo inicial NØX. Precios de venta sugeridos; confirmar stock,
+    // costo de envío y disponibilidad con ELE-GATE antes de aceptar cada pedido.
     const STORE = { name: "NØX", products: [
       {
-        name: "Consola portátil de videojuegos retro",
+        name: "Smartwatch Bluetooth con llamadas",
         category: "Tecnología y gadgets",
-        description: "Precio propuesto. Disponibilidad, envío y condiciones del proveedor pendientes de confirmar. Aún no disponible para compra.",
-        price: 799,
-        badge: "Próximamente · en validación"
+        description: "Recibe notificaciones, controla tu música y conecta tu celular por Bluetooth. Disponible en variantes de color según stock.",
+        price: 399,
+        badge: "Nuevo · consultar disponibilidad"
+      },
+      {
+        name: "Webcam Ultra HD 4K con doble micrófono",
+        category: "Tecnología y gadgets",
+        description: "Para videollamadas, clases y streaming. Conexión USB/USB-C, clip para monitor y micrófonos integrados.",
+        price: 699,
+        badge: "Nuevo · consultar disponibilidad"
+      },
+      {
+        name: "Cámara para auto 4K de 3 canales",
+        category: "Accesorios",
+        description: "Graba frontal en 4K y cabina y parte trasera en 1080p. Incluye WiFi 5 GHz y GPS integrado.",
+        price: 1599,
+        badge: "Seguridad para tu auto · consultar stock"
+      },
+      {
+        name: "Mini impresora térmica Bluetooth 57 mm",
+        category: "Tecnología y gadgets",
+        description: "Imprime notas, etiquetas, listas y códigos QR desde iPhone o Android. No utiliza tinta; impresión en blanco y negro.",
+        price: 349,
+        badge: "Práctica y portátil · consultar disponibilidad"
+      },
+      {
+        name: "Mouse inalámbrico Bluetooth + USB",
+        category: "Accesorios",
+        description: "Conexión dual, clic silencioso y tres niveles de DPI. Funciona con Bluetooth o receptor USB; requiere 2 pilas AA.",
+        price: 199,
+        badge: "Para laptop y PC · consultar disponibilidad"
       }
     ] };
     let activeCategory = "Todas";
