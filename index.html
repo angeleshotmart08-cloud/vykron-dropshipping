@@ -45,7 +45,7 @@
     .product-info{padding:17px}.product-category{color:#969eaa;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase}
     .product-name{font-size:.98rem;font-weight:650;margin:7px 0 5px}.product-description{font-size:.78rem;color:var(--muted);margin:0 0 14px}
     .product-price{font-weight:700;font-size:1.02rem}.product-old{font-size:.75rem;color:#7d8590;text-decoration:line-through;margin-left:8px}
-    .product-badge{display:inline-block;margin-bottom:9px;padding:4px 7px;border:1px solid #ffffff2b;color:#c7cdd6;font-size:.59rem;letter-spacing:.1em;text-transform:uppercase}
+    .product-badge{display:inline-block;margin-bottom:9px;padding:4px 7px;border:1px solid #ffffff2b;color:#c7cdd6;font-size:.59rem;letter-spacing:.1em;text-transform:uppercase}.product-cta{display:inline-flex;margin-top:14px;padding:10px 12px;border:1px solid #aeb5c0;color:#f4f5f7;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase}.product-cta:hover{background:#e7eaf0;color:#08090b}.catalog-note{margin:16px 0 0;color:#9da5b0;font-size:.75rem}
     .catalog-empty{grid-column:1/-1}
     @media(max-width:850px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:620px){.catalog-tools{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr}.product-photo{aspect-ratio:16/10}}
@@ -95,6 +95,7 @@
         <div><p class="section-kicker">La selección NØX</p><h2 id="featured-title">Productos destacados</h2></div>
         <div class="count" id="product-count">0 productos disponibles</div>
       </div>
+      <p class="catalog-note">Catálogo inicial. Consulta disponibilidad y costo de envío antes de confirmar tu pedido. Los cobros todavía no están habilitados.</p>
       <div class="catalog-tools" aria-label="Buscar y ordenar productos">
         <input id="product-search" type="search" placeholder="Buscar productos..." aria-label="Buscar productos">
         <select id="product-sort" aria-label="Ordenar productos">
@@ -119,39 +120,31 @@
     // costo de envío y disponibilidad con ELE-GATE antes de aceptar cada pedido.
     const STORE = { name: "NØX", products: [
       {
-        name: "Smartwatch Bluetooth con llamadas",
+        name: "Combo Gamer RGB: teclado, mouse y soporte",
         category: "Tecnología y gadgets",
-        description: "Recibe notificaciones, controla tu música y conecta tu celular por Bluetooth. Disponible en variantes de color según stock.",
-        price: 399,
-        badge: "Nuevo · consultar disponibilidad"
+        description: "Teclado con iluminación LED, mouse ergonómico y soporte integrado para celular. Conexión USB para PC, laptop y Mac.",
+        price: 549,
+        image: "https://img.ele-gate.com/wp-content/uploads/2021/09/ST.07-11.jpg",
+        badge: "SKU ST.07 · disponibilidad por confirmar",
+        supplier: "ELE-GATE"
       },
       {
-        name: "Webcam Ultra HD 4K con doble micrófono",
-        category: "Tecnología y gadgets",
-        description: "Para videollamadas, clases y streaming. Conexión USB/USB-C, clip para monitor y micrófonos integrados.",
-        price: 699,
-        badge: "Nuevo · consultar disponibilidad"
-      },
-      {
-        name: "Cámara para auto 4K de 3 canales",
-        category: "Accesorios",
-        description: "Graba frontal en 4K y cabina y parte trasera en 1080p. Incluye WiFi 5 GHz y GPS integrado.",
-        price: 1599,
-        badge: "Seguridad para tu auto · consultar stock"
-      },
-      {
-        name: "Mini impresora térmica Bluetooth 57 mm",
-        category: "Tecnología y gadgets",
-        description: "Imprime notas, etiquetas, listas y códigos QR desde iPhone o Android. No utiliza tinta; impresión en blanco y negro.",
+        name: "Control Bluetooth para celular con soporte",
+        category: "Gaming móvil",
+        description: "Gamepad recargable con soporte para celular. Bluetooth para Android; conexión 2.4 GHz mediante dongle para PC, PS3 y Smart TV.",
         price: 349,
-        badge: "Práctica y portátil · consultar disponibilidad"
+        image: "https://img.ele-gate.com/wp-content/uploads/2021/02/GM.BT_.03-10.jpg",
+        badge: "SKU GM.BT.03 · disponibilidad por confirmar",
+        supplier: "ELE-GATE"
       },
       {
-        name: "Mouse inalámbrico Bluetooth + USB",
-        category: "Accesorios",
-        description: "Conexión dual, clic silencioso y tres niveles de DPI. Funciona con Bluetooth o receptor USB; requiere 2 pilas AA.",
-        price: 199,
-        badge: "Para laptop y PC · consultar disponibilidad"
+        name: "Teclado gamer inalámbrico de 99 teclas",
+        category: "Tecnología y gadgets",
+        description: "Tres modos de conexión: Bluetooth, inalámbrico 2.4 GHz y USB. Iluminación arcoíris, bloque numérico y batería recargable USB-C.",
+        price: 699,
+        image: "https://img.ele-gate.com/mx/products/u9/2026/09/TC.XXH02-8.jpg",
+        badge: "SKU TC.XXH02 · disponibilidad por confirmar",
+        supplier: "ELE-GATE"
       }
     ] };
     let activeCategory = "Todas";
@@ -187,7 +180,7 @@
         const copy = document.createElement("p");
         if (STORE.products.length === 0) {
           title.textContent = "Estamos preparando algo especial.";
-          copy.textContent = "Estamos verificando proveedores, precios y disponibilidad antes de publicar los primeros productos.";
+          copy.textContent = "Estamos actualizando la selección. Consulta por Instagram para confirmar disponibilidad y envío.";
         } else {
           title.textContent = "No encontramos productos.";
           copy.textContent = "Prueba otra búsqueda o selecciona una categoría diferente.";
@@ -209,6 +202,14 @@
         const description = document.createElement("p"); description.className = "product-description"; description.textContent = product.description || "";
         const price = document.createElement("span"); price.className = "product-price"; price.textContent = money(product.price);
         info.append(category,name,description,price);
+        const cta = document.createElement("a");
+        cta.className = "product-cta";
+        cta.href = "https://ig.me/m/nox.store.mx";
+        cta.target = "_blank";
+        cta.rel = "noopener noreferrer";
+        cta.textContent = "Consultar por Instagram ↗";
+        cta.setAttribute("aria-label", "Consultar " + product.name + " por Instagram");
+        info.append(cta);
         if (product.oldPrice && product.oldPrice > product.price) { const old = document.createElement("span"); old.className = "product-old"; old.textContent = money(product.oldPrice); info.append(old); }
         card.append(photo,info); productsEl.append(card);
       });
